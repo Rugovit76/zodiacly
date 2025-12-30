@@ -1,0 +1,129 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Plan {
+  FREE
+  PRO
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELED
+  PAST_DUE
+  INCOMPLETE
+  TRIALING
+}
+
+enum ZodiacSign {
+  ARIES
+  TAURUS
+  GEMINI
+  CANCER
+  LEO
+  VIRGO
+  LIBRA
+  SCORPIO
+  SAGITTARIUS
+  CAPRICORN
+  AQUARIUS
+  PISCES
+}
+
+enum HoroscopeType {
+  DAILY
+  WEEKLY
+}
+
+model User {
+  id                   String              @id @default(cuid())
+  email                String              @unique
+  passwordHash         String
+  role                 Role                @default(USER)
+  plan                 Plan                @default(FREE)
+  stripeCustomerId     String?             @unique
+  stripeSubscriptionId String?             @unique
+  subscriptionStatus   SubscriptionStatus?
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+
+  natalCharts NatalChart[]
+  usage       Usage?
+
+  @@index([email])
+  @@index([stripeCustomerId])
+}
+
+model NatalChart {
+  id         String   @id @default(cuid())
+  userId     String
+  publicId   String?  @unique // For public sharing: zodiacly.com/chart/abc123
+  isPublic   Boolean  @default(false) // Control chart visibility
+  shareCount Int      @default(0) // Track sharing metrics
+  viewCount  Int      @default(0) // Track popularity
+  birthDate  DateTime
+  birthTime  String
+  latitude   Float
+  longitude  Float
+  timezone   String
+  location   String
+  chartData  Json // Stores planet positions, houses, aspects, etc.
+  aiReading  Json? // Stores AI-generated interpretation
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+  @@index([publicId])
+  @@index([isPublic])
+}
+
+model Usage {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  aiCallsThisMonth Int      @default(0)
+  lastResetAt      DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WebhookEvent {
+  id        String   @id @default(cuid())
+  type      String
+  payload   Json
+  processed Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([type])
+  @@index([processed])
+  @@index([createdAt])
+}
+
+model Horoscope {
+  id         String        @id @default(cuid())
+  sign       ZodiacSign
+  type       HoroscopeType
+  date       DateTime      @db.Date // The date this horoscope is for (not when generated)
+  content    Json          // {general, love, career, health, money, luckyNumber, luckyColor}
+  generatedAt DateTime     @default(now())
+  
+  @@unique([sign, type, date]) // One horoscope per sign per type per date
+  @@index([date])
+  @@index([type])
+  @@index([sign, type, date])
+}
