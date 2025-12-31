@@ -1,0 +1,23 @@
+# Database
+DATABASE_URL=postgresql://neondb_owner:npg_2s8EhFgrDfdI@ep-holy-hall-ag7c1qe4-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+# App Configuration
+NEXT_PUBLIC_APP_URL=https://zodiacly.online
+JWT_SECRET=e37f8db60b387042b570beb1aa6d6efecfd9e32c80a9868474ea00cde8a27bf5
+
+# Stripe (LIVE MODE)
+STRIPE_SECRET_KEY=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
+STRIPE_PUBLISHABLE_KEY=pk_live_51Sk3waRowGmdnWdCiqIBRVnjKQtlNO9PmU1kR2WBnUogzUWp7hDPGY4AFkWAjimAxCynV94ubB7NKZdn1x6Nemjl00jMOzoTzw
+STRIPE_WEBHOOK_SECRET=whsec_placeholder_update_after_webhook_creation
+STRIPE_PRICE_PRO_MONTHLY=price_1Sk4j8RowGmdnWdCMkZ1JrGj
+STRIPE_PRICE_PRO_YEARLY=price_1Sk5CsRowGmdnWdCdEqpR7n3
+
+# OpenAI
+OPENAI_API_KEY=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
+
+# AI Usage Limits
+FREE_PLAN_AI_CALLS_PER_MONTH=1
+PRO_PLAN_AI_CALLS_PER_MONTH=100
+
+# Cron Security
+CRON_SECRET=cron_8f4a2b9d3e7c1f6a5b8d2e9c4a7f1b3e

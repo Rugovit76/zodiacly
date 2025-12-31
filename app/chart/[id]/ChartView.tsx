@@ -34,8 +34,8 @@ export default function ChartView({ chart, user }: ChartViewProps) {
   const [error, setError] = useState('')
   const chartRef = useRef<HTMLDivElement>(null)
 
-  const chartData = chart.chartData as ChartData
-  const aiReading = chart.aiReading as AIReading | null
+  const chartData = chart.chartData as unknown as ChartData
+  const aiReading = chart.aiReading as unknown as AIReading | null
 
   async function generateReading() {
     setGenerating(true)

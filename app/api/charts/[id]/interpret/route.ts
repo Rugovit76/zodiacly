@@ -59,7 +59,7 @@ export async function POST(
     }
 
     // Generate AI interpretation
-    const chartData = chart.chartData as ChartData
+    const chartData = chart.chartData as unknown as ChartData
     const reading = await generateChartInterpretation(chartData, session.plan === 'PRO')
 
     // Increment usage
