@@ -71,8 +71,8 @@ export default function ContactForm({ user }: ContactFormProps) {
             <div>
               <h3 className="font-semibold text-cosmic-primary mb-2">📧 Email Support</h3>
               <p className="text-gray-400">For general inquiries:</p>
-              <a href="mailto:support@zodiacly.com" className="text-white hover:text-cosmic-primary transition-colors">
-                support@zodiacly.com
+              <a href="mailto:support@zodiacly.online" className="text-white hover:text-cosmic-primary transition-colors">
+                support@zodiacly.online
               </a>
             </div>
 
@@ -80,7 +80,7 @@ export default function ContactForm({ user }: ContactFormProps) {
               <h3 className="font-semibold text-cosmic-secondary mb-2">🔒 Privacy & Legal</h3>
               <p className="text-gray-400">For privacy concerns:</p>
               <a href="mailto:privacy@zodiacly.online" className="text-white hover:text-cosmic-primary transition-colors">
-                privacy@zodiacly.com
+                privacy@zodiacly.online
               </a>
               <p className="text-gray-400 mt-2">For legal matters:</p>
               <a href="mailto:legal@zodiacly.online" className="text-white hover:text-cosmic-primary transition-colors">

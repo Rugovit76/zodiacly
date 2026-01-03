@@ -201,7 +201,7 @@ export default function CompatibilityCalculator({ charts }: CompatibilityCalcula
                   water: '💧'
                 }
 
-                const totalPlanets = Object.values(result.elementBalance).reduce((a: number, b: number) => a + b, 0)
+                const totalPlanets = (Object.values(result.elementBalance) as number[]).reduce((a, b) => a + b, 0)
                 const percentage = totalPlanets > 0 ? Math.round((count / totalPlanets) * 100) : 0
 
                 return (

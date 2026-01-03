@@ -120,10 +120,10 @@ export default function ShareButton({ chartId, isPublic = false, publicId }: Sha
           className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
           onClick={() => setShowShareModal(false)}
         >
-          <Card
-            className="max-w-md w-full"
-            onClick={(e: React.MouseEvent) => e.stopPropagation()}
-          >
+          <Card className="max-w-md w-full">
+            <div
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            >
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Share Your Chart</h2>
               <button
@@ -209,6 +209,7 @@ export default function ShareButton({ chartId, isPublic = false, publicId }: Sha
                 💡 <strong>Pro Tip:</strong> Ask your friends to create their charts and
                 compare compatibility!
               </p>
+            </div>
             </div>
           </Card>
         </div>

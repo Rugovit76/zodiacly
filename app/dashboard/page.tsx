@@ -13,7 +13,7 @@ export default async function DashboardPage() {
   }
 
   // Fetch user's charts
-  const charts = await prisma.natalChart.findMany({
+  const chartsData = await prisma.natalChart.findMany({
     where: { userId: session.id },
     orderBy: { createdAt: 'desc' },
     select: {
@@ -26,6 +26,12 @@ export default async function DashboardPage() {
       publicId: true,
     },
   })
+
+  // Map null to undefined for TypeScript compatibility
+  const charts = chartsData.map(chart => ({
+    ...chart,
+    publicId: chart.publicId ?? undefined,
+  }))
 
   // Get usage info
   const usageInfo = await getUsageInfo(session.id, session.plan)

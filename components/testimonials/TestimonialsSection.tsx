@@ -75,7 +75,7 @@ export default function TestimonialsSection() {
                     <div className="text-sm text-gray-400">{testimonial.location}</div>
                   </div>
                 </div>
-                <Badge variant={testimonial.plan === 'PRO' ? 'pro' : 'default'}>
+                <Badge variant={testimonial.plan === 'PRO' ? 'pro' : 'free'}>
                   {testimonial.plan}
                 </Badge>
               </div>

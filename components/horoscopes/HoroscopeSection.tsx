@@ -91,13 +91,13 @@ export default function HoroscopeSection() {
         {/* Type Toggle */}
         <div className="flex justify-center gap-4 mb-8">
           <Button
-            variant={type === 'daily' ? 'default' : 'outline'}
+            variant={type === 'daily' ? 'primary' : 'outline'}
             onClick={() => setType('daily')}
           >
             Daily
           </Button>
           <Button
-            variant={type === 'weekly' ? 'default' : 'outline'}
+            variant={type === 'weekly' ? 'primary' : 'outline'}
             onClick={() => setType('weekly')}
           >
             Weekly
