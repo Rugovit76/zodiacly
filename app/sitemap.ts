@@ -1,6 +1,10 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/db/prisma'
 
+// Force dynamic rendering for sitemap
+export const dynamic = 'force-dynamic'
+export const revalidate = 3600 // Revalidate every hour
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://zodiacly.online'
 

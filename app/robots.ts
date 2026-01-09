@@ -1,5 +1,8 @@
 import { MetadataRoute } from 'next'
 
+// Cache robots.txt for 1 day
+export const revalidate = 86400
+
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = 'https://zodiacly.online'
 
