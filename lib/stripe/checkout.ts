@@ -20,6 +20,23 @@ export async function createCheckoutSession(
 
   console.log('[Checkout] Existing customer ID from DB:', customerId)
 
+  // TEMP FIX: Force reset test mode customers (cus_Tizt...)
+  // This specific customer ID is from test mode and will never work with live keys
+  if (customerId === 'cus_Tizt94JB4toptK') {
+    console.log('[Checkout] Detected known test mode customer ID. Force resetting...')
+    customerId = null
+    
+    await prisma.user.update({
+      where: { id: userId },
+      data: { 
+        stripeCustomerId: null,
+        stripeSubscriptionId: null,
+        subscriptionStatus: null
+      },
+    })
+    console.log('[Checkout] Test mode customer data cleared')
+  }
+
   // Create a new customer if one doesn't exist OR if the existing customer is invalid
   // (e.g., test mode customer when using live keys)
   if (customerId) {
