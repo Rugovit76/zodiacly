@@ -50,6 +50,14 @@ export default function Navbar({ user }: NavbarProps) {
                   Dashboard
                 </Link>
                 <Link
+                  href="/create-chart"
+                  className={`hover:text-cosmic-primary transition-colors ${
+                    pathname === '/create-chart' ? 'text-cosmic-primary' : 'text-gray-300'
+                  }`}
+                >
+                  ⭐ Natal Chart
+                </Link>
+                <Link
                   href="/compatibility"
                   className={`hover:text-cosmic-secondary transition-colors ${
                     pathname === '/compatibility' ? 'text-cosmic-secondary' : 'text-gray-300'
@@ -136,6 +144,9 @@ export default function Navbar({ user }: NavbarProps) {
               <>
                 <Link href="/dashboard" className="block text-gray-300 hover:text-cosmic-primary">
                   Dashboard
+                </Link>
+                <Link href="/create-chart" className="block text-gray-300 hover:text-cosmic-primary">
+                  ⭐ Natal Chart
                 </Link>
                 <Link href="/compatibility" className="block text-gray-300 hover:text-cosmic-secondary">
                   💑 Compatibility
