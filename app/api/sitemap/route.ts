@@ -9,7 +9,7 @@ export async function GET() {
 
   try {
     // Static routes
-    const staticUrls = [
+    const staticUrls: Array<{ loc: string; priority: string; changefreq: string; lastmod?: string }> = [
       { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
       { loc: `${baseUrl}/create-chart`, priority: '0.9', changefreq: 'daily' },
       { loc: `${baseUrl}/numerology`, priority: '0.9', changefreq: 'daily' },
