@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
 
@@ -206,7 +207,9 @@ export default function HoroscopeSection() {
         {/* CTA */}
         <div className="mt-12 text-center">
           <p className="text-gray-400 mb-4">Want personalized insights based on your exact birth chart?</p>
-          <Button size="lg">Create Your Natal Chart</Button>
+          <Link href="/create-chart">
+            <Button size="lg">Create Your Natal Chart</Button>
+          </Link>
         </div>
       </div>
     </section>
